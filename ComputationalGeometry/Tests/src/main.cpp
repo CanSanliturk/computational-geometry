@@ -1,9 +1,14 @@
-#include "test.hpp"
-#include "utilities.h"
-#include "testtest.hpp"
+#include "pointTests.hpp"
+
+#include "logging.hpp"
+
+#include <boost/test/unit_test.hpp>
 
 int main() {
-    example_test();
-    utilities::logger("hello, world!");
+
+    utilities::logger("Tests start");
+
+    tests::pointTests::runTests();
+
     return 0;
 }

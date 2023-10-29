@@ -1,21 +1,12 @@
-#ifndef _UTILITIES_H
-#define _UTILITIES_H
+#ifndef _TIMER_H
+#define _TIMER_H
 
-#include <string>
-#include <iostream>
-#include <sstream>
+#include "logging.hpp"
+
 #include <chrono>
 
 namespace utilities
 {
-    // Logger function using variadic templates
-    template<typename... Args>
-    void logger(const Args&... args) {
-        std::ostringstream oss;
-        (oss << ... << args);
-        std::cout << oss.str() << std::endl;
-    }
-
     class timer {
 
     public:
