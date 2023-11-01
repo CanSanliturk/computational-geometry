@@ -8,5 +8,4 @@ add_library(CoreLib ${CORE_SOURCE_FILES})
 target_include_directories(CoreLib PUBLIC include ${CMAKE_SOURCE_DIR}/../Utilities/include)
 
 # Link Boost libraries if required
-find_package(Boost 1.83.0 REQUIRED)
-target_link_libraries(CoreLib PUBLIC UtilitiesLib Boost::boost)
+target_link_libraries(CoreLib PUBLIC UtilitiesLib)

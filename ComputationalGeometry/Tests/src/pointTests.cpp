@@ -1,92 +1,56 @@
-#include "pointTests.hpp"
-
 #include "point.hpp"
-
-#include "logging.hpp"
 
 #include <boost/test/unit_test.hpp>
 
-namespace tests {
-    namespace pointTests {
-    
-        using core::point;
+using core::point;
 
-        bool runTests() {
-
-            utilities::logger("========== POINT TEST CASES START ==========");
-
-            bool result = true;
-
-            result &= testEquals();
-
-            utilities::logger("=========== POINT TEST CASES END ===========");
-
-            if (true == result)
-                utilities::logger("All passed");
-            else
-                utilities::logger("Some failed!");
-
-            return result;
-        }
-
-        bool testEquals() {
-
-            bool result = true;
-
-            point p1(1, 2, 3);
-            point p2(1, 2, 3);
-            result &= (p1 == p2);
-            BOOST_CHECK(result);
+BOOST_AUTO_TEST_CASE(TestPointEquals)
+{
+    point p1(1, 2, 3);
+    point p2(1, 2, 3);
+    BOOST_CHECK(p1 == p2);
             
-            point p0;
-            result &= (false == (p0 == p1));
-            BOOST_CHECK(result);
+    point p0;
+    BOOST_CHECK(false == (p0 == p1));
+}
 
-            return result;
-        }
+BOOST_AUTO_TEST_CASE(TestPointNotEquals)
+{
+    point p0;
+    point p1(1, 2, 3);
+    BOOST_CHECK(p0 != p1);
+            
+    core::point p2(1, 2, 3);    
+    BOOST_CHECK(false == (p1 != p2));
+}
 
-        bool testNotEquals() {
-            return false;
-        }
+BOOST_AUTO_TEST_CASE(TestPointGet)
+{
+    point p(1, 2, 3);
 
-        bool testGetX() {
-            return false;
+    BOOST_CHECK(1 == p.getX());
+    BOOST_CHECK(2 == p.getY());
+    BOOST_CHECK(3 == p.getZ());
 
-        }
+    const std::array<const double, 3> expectedCoords { 1, 2, 3 };
+    const std::array<const double, 3> actualCoords = p.getCoordinates();
+    for (size_t i = 0; i < 3; i++)
+        BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
+}
 
-        bool testGetY() {
-            return false;
+BOOST_AUTO_TEST_CASE(TestPointSet)
+{
+    point p;
+    p.setX(1);
+    p.setY(2);
+    p.setZ(3);
 
-        }
+    BOOST_CHECK(1 == p.getX());
+    BOOST_CHECK(2 == p.getY());
+    BOOST_CHECK(3 == p.getZ());
 
-        bool testGetZ() {
-            return false;
-
-        }
-
-        bool testGetCoordinates() {
-            return false;
-
-        }
-
-        bool testSetX() {
-
-            return false;
-        }
-
-        bool testSetY() {
-            return false;
-
-        }
-
-        bool testSetZ() {
-            return false;
-
-        }
-
-        bool testGetDistance() {
-            return false;
-
-        }
-    }
+    const std::array<const double, 3> expectedCoords { 1, 2, 3 };
+    const std::array<const double, 3> actualCoords = p.getCoordinates();
+    for (size_t i = 0; i < 3; i++)
+        BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
 }

@@ -8,5 +8,4 @@ add_library(UtilitiesLib ${UTILITIES_SOURCE_FILES})
 target_include_directories(UtilitiesLib PUBLIC include)
 
 # Link Boost libraries if required
-find_package(Boost 1.83.0 REQUIRED)
-target_link_libraries(UtilitiesLib PUBLIC Boost::boost)
+target_link_libraries(UtilitiesLib PUBLIC)

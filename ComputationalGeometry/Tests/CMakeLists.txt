@@ -9,7 +9,7 @@ file(GLOB_RECURSE TEST_SOURCE_FILES "src/*.cpp")
 add_executable(ComputationalGeometryTests ${TEST_SOURCE_FILES})
 
 # Find boost library
-find_package(Boost 1.83.0 REQUIRED COMPONENTS unit_test_framework)
+find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
 # Include the Utilities and Core directories
 target_include_directories(ComputationalGeometryTests PUBLIC 

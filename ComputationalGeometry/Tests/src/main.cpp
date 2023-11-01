@@ -1,14 +1,4 @@
-#include "pointTests.hpp"
+// Main file for unit tests
 
-#include "logging.hpp"
-
+#define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-
-int main() {
-
-    utilities::logger("Tests start");
-
-    tests::pointTests::runTests();
-
-    return 0;
-}
