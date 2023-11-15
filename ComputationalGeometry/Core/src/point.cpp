@@ -1,17 +1,17 @@
-#include "point.hpp"
+#include "ComputationalGeometryCore/Entities/point.hpp"
 
-#include "maths.hpp"
+#include "ComputationalGeometryUtilities/maths.hpp"
 
 #include <cmath>
 
-namespace core {
+namespace computationalgeometry::core::entities {
 
     point::point(double x, double y, double z)
         : x(x), y(y), z(z) { }
 
     bool point::operator==(const point& other) const {
         for (unsigned int i = 0; i < 3; ++i)
-            if (false == utilities::areEqual(getCoordinates()[i], other.getCoordinates()[i]))
+            if (false == computationalgeometry::utilities::areEqual(getCoordinates()[i], other.getCoordinates()[i]))
                 return false;
         return true;
     }

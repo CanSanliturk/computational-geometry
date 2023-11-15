@@ -6,7 +6,7 @@
 #include <sstream>
 #include <chrono>
 
-namespace utilities
+namespace computationalgeometry::utilities
 {
     template<typename... Args>
     inline void logger(const Args&... args) {
@@ -15,7 +15,7 @@ namespace utilities
         std::cout << oss.str() << std::endl;
     }
 
-} // namespace utilities
+} // namespace computationalgeometry::utilities
 
 
 

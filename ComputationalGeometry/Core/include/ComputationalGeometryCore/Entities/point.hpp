@@ -3,7 +3,7 @@
 
 #include <array>
 
-namespace core {
+namespace computationalgeometry::core::entities {
     class point {
 
     public:

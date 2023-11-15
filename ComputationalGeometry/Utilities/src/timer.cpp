@@ -1,6 +1,6 @@
-#include "timer.hpp"
+#include "ComputationalGeometryUtilities/timer.hpp"
 
-namespace utilities {
+namespace computationalgeometry::utilities {
 
     // Timer class implementation
     timer::timer() : start_time(std::chrono::high_resolution_clock::now())

@@ -1,8 +1,8 @@
-#include "point.hpp"
+#include "ComputationalGeometryCore/Entities/point.hpp"
 
 #include <boost/test/unit_test.hpp>
 
-using core::point;
+using computationalgeometry::core::entities::point;
 
 BOOST_AUTO_TEST_CASE(TestPointEquals)
 {
@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE(TestPointNotEquals)
     point p1(1, 2, 3);
     BOOST_CHECK(p0 != p1);
             
-    core::point p2(1, 2, 3);    
+    point p2(1, 2, 3);    
     BOOST_CHECK(false == (p1 != p2));
 }
 
