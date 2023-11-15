@@ -16,11 +16,11 @@ namespace computationalgeometry::utilities
         timer(timer&&) = delete;
         ~timer() = default;
 
-        void tick();
-        void tock();
+        void tick() const;
+        void tock() const;
 
     private:
-        std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
+        mutable std::chrono::time_point<std::chrono::high_resolution_clock> start_time;
     };
 
 } // namespace utilities

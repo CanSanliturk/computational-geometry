@@ -14,16 +14,6 @@ BOOST_AUTO_TEST_CASE(TestPointEquals)
     BOOST_CHECK(false == (p0 == p1));
 }
 
-BOOST_AUTO_TEST_CASE(TestPointNotEquals)
-{
-    point p0;
-    point p1(1, 2, 3);
-    BOOST_CHECK(p0 != p1);
-            
-    point p2(1, 2, 3);    
-    BOOST_CHECK(false == (p1 != p2));
-}
-
 BOOST_AUTO_TEST_CASE(TestPointGet)
 {
     point p(1, 2, 3);
@@ -32,8 +22,8 @@ BOOST_AUTO_TEST_CASE(TestPointGet)
     BOOST_CHECK(2 == p.getY());
     BOOST_CHECK(3 == p.getZ());
 
-    const std::array<const double, 3> expectedCoords { 1, 2, 3 };
-    const std::array<const double, 3> actualCoords = p.getCoordinates();
+    std::array<double, 3> expectedCoords { 1, 2, 3 };
+    std::array<double, 3>&& actualCoords = p.getCoordinates();
     for (size_t i = 0; i < 3; i++)
         BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
 }
@@ -49,8 +39,8 @@ BOOST_AUTO_TEST_CASE(TestPointSet)
     BOOST_CHECK(2 == p.getY());
     BOOST_CHECK(3 == p.getZ());
 
-    const std::array<const double, 3> expectedCoords { 1, 2, 3 };
-    const std::array<const double, 3> actualCoords = p.getCoordinates();
+    std::array<double, 3> expectedCoords { 1, 2, 3 };
+    std::array<double, 3>&& actualCoords = p.getCoordinates();
     for (size_t i = 0; i < 3; i++)
         BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
 }

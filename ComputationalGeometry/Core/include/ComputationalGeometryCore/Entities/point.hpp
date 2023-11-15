@@ -9,7 +9,7 @@ namespace computationalgeometry::core::entities {
     public:
         point() = default;
 
-        point(double x, double y, double z = 0);
+        point(double xCoord, double yCoord, double zCoord = 0);
 
         point(const point& other) = default;
 
@@ -23,8 +23,6 @@ namespace computationalgeometry::core::entities {
 
         bool operator==(const point& other) const;
 
-        bool operator!=(const point& other) const;
-
         double getDistanceTo(const point& other) const;
 
         double getX() const;
@@ -33,13 +31,13 @@ namespace computationalgeometry::core::entities {
 
         double getZ() const;
 
-        const std::array<const double, 3> getCoordinates() const;
+        std::array<double, 3> getCoordinates() const;
 
-        void setX(double x);
+        void setX(double xCoord);
 
-        void setY(double y);
+        void setY(double yCoord);
 
-        void setZ(double z);
+        void setZ(double zCoord);
 
     private:
         double x;

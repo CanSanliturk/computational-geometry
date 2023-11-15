@@ -6,18 +6,14 @@
 
 namespace computationalgeometry::core::entities {
 
-    point::point(double x, double y, double z)
-        : x(x), y(y), z(z) { }
+    point::point(double xCoord, double yCoord, double zCoord)
+        : x(xCoord), y(yCoord), z(zCoord) { }
 
     bool point::operator==(const point& other) const {
         for (unsigned int i = 0; i < 3; ++i)
             if (false == computationalgeometry::utilities::areEqual(getCoordinates()[i], other.getCoordinates()[i]))
                 return false;
         return true;
-    }
-
-    bool point::operator!=(const point& other) const {
-        return !((*this) == other);
     }
 
     double point::getDistanceTo(const point& other) const {
@@ -44,19 +40,19 @@ namespace computationalgeometry::core::entities {
         return z;
     }
 
-    const std::array<const double, 3> point::getCoordinates() const {
+    std::array<double, 3> point::getCoordinates() const {
         return { x, y, z };
     }
 
-    void point::setX(double x) {
-        this->x = x;
+    void point::setX(double xCoord) {
+        this->x = xCoord;
     }
 
-    void point::setY(double y) {
-        this->y = y;
+    void point::setY(double yCoord) {
+        this->y = yCoord;
     }
 
-    void point::setZ(double z) {
-        this->z = z;
+    void point::setZ(double zCoord) {
+        this->z = zCoord;
     }
 }

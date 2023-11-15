@@ -3,16 +3,16 @@
 namespace computationalgeometry::utilities {
 
     // Timer class implementation
-    timer::timer() : start_time(std::chrono::high_resolution_clock::now())
+    timer::timer()
     {
-
-    }
-
-    void timer::tick() {
         start_time = std::chrono::high_resolution_clock::now();
     }
 
-    void timer::tock() {
+    void timer::tick() const {
+        start_time = std::chrono::high_resolution_clock::now();
+    }
+
+    void timer::tock() const {
         auto end_time = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
 
