@@ -29,7 +29,7 @@ namespace computationalgeometry::core::entities {
     }
 
     double vector3d::length() const {
-        return start.distanceTo(end);
+        return start.getDistanceTo(end);
     }
 
     double vector3d::dotProduct(const vector3d& other) const {

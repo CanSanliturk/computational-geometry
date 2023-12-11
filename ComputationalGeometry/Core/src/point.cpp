@@ -16,6 +16,20 @@ namespace computationalgeometry::core::entities {
         return true;
     }
 
+    point point::operator-(const point& other) const {
+        const double newX = x - other.x;
+        const double newY = y - other.y;
+        const double newZ = z - other.z;
+        return { newX, newY, newZ };
+    }
+
+    point point::operator+(const point& other) const {
+        const double newX = x + other.x;
+        const double newY = y + other.y;
+        const double newZ = z + other.z;
+        return { newX, newY, newZ };
+    }
+
     double point::getDistanceTo(const point& other) const {
 
         if (other == *this)

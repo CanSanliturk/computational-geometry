@@ -1,4 +1,2 @@
-// Main file for unit tests
-
-#define BOOST_TEST_MAIN
-#include <boost/test/unit_test.hpp>
+#define BOOST_TEST_MODULE ComputationalGeometryTestModule
+#include <boost/test/included/unit_test.hpp>

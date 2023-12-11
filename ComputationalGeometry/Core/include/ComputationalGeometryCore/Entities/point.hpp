@@ -23,6 +23,10 @@ namespace computationalgeometry::core::entities {
 
         bool operator==(const point& other) const;
 
+        point operator-(const point& other) const;
+        
+        point operator+(const point& other) const;
+
         double getDistanceTo(const point& other) const;
 
         double getX() const;
