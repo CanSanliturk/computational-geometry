@@ -20,8 +20,8 @@ namespace computationalgeometry::core::entities {
         point getStart() const;
         point getEnd() const;
 
-        void setStart(const point& start);
-        void setEnd(const point& end);
+        void setStart(const point& startPoint);
+        void setEnd(const point& endPoint);
 
         // method to calculate the length (magnitude) of the vector
         double length() const;

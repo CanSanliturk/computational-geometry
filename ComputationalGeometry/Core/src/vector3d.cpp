@@ -10,7 +10,7 @@ namespace computationalgeometry::core::entities {
 
     vector3d::vector3d(const point& startCoord, const point& endCoord) : start(startCoord), end(endCoord) { }
 
-    vector3d::vector3d(const vector3d& other) : start(other.start), end(other.end) { }
+    vector3d::vector3d(const vector3d& other) = default;
 
     vector3d& vector3d::operator=(const vector3d& other) {
         if (this != &other) {
@@ -80,11 +80,11 @@ namespace computationalgeometry::core::entities {
         return end;
     }
 
-    void vector3d::setStart(const point& start) {
+    void vector3d::setStart(const point& startPoint) {
         this->start = start;
     }
 
-    void vector3d::setEnd(const point& end) {
+    void vector3d::setEnd(const point& endPoint) {
         this->end = end;
     }
 }
