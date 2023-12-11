@@ -81,10 +81,10 @@ namespace computationalgeometry::core::entities {
     }
 
     void vector3d::setStart(const point& startPoint) {
-        this->start = start;
+        this->start = startPoint;
     }
 
     void vector3d::setEnd(const point& endPoint) {
-        this->end = end;
+        this->end = endPoint;
     }
 }
