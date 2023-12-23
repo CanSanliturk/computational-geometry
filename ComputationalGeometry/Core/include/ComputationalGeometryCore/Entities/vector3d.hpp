@@ -7,13 +7,7 @@ namespace computationalgeometry::core::entities {
     class vector3d {
         
     public:
-        vector3d();
         vector3d(const point& startPoint, const point& endPoint);
-        vector3d(const vector3d& other);
-        vector3d(vector3d&& other) noexcept = default;
-        vector3d& operator=(const vector3d& other);
-        vector3d& operator=(vector3d&& other) noexcept;
-        ~vector3d() = default;
 
         bool operator==(const vector3d& other) const;
 

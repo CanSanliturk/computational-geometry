@@ -6,27 +6,7 @@
 
 namespace computationalgeometry::core::entities {
 
-    vector3d::vector3d() : start(), end() { }
-
     vector3d::vector3d(const point& startCoord, const point& endCoord) : start(startCoord), end(endCoord) { }
-
-    vector3d::vector3d(const vector3d& other) = default;
-
-    vector3d& vector3d::operator=(const vector3d& other) {
-        if (this != &other) {
-            start = other.start;
-            end = other.end;
-        }
-        return *this;
-    }
-
-    vector3d& vector3d::operator=(vector3d&& other) noexcept {
-        if (this != &other) {
-            start = std::move(other.start);
-            end = std::move(other.end);
-        }
-        return *this;
-    }
 
     double vector3d::length() const {
         return start.getDistanceTo(end);
