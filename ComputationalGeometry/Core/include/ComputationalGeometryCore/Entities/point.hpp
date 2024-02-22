@@ -12,7 +12,7 @@ namespace computationalgeometry::core::entities {
 
         point(double xCoord, double yCoord, double zCoord = 0);
 
-        point(const std::array<double, 3>& coords);
+        explicit point(const std::array<double, 3>& coords);
 
         point(const point& other) = default;
 

@@ -25,8 +25,6 @@ BOOST_AUTO_TEST_CASE(TestIntersectingLines)
     // calculate intersection
     twoLinesIntersectionCalculator calculator(line1, line2);
 
-    auto asd = calculator.getIntersection();
-
     BOOST_CHECK(expectedIntersection == calculator.getIntersection());
 }
 
