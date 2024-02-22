@@ -4,6 +4,7 @@
 #include <array>
 
 namespace computationalgeometry::core::entities {
+
     class point {
 
     public:
@@ -11,13 +12,15 @@ namespace computationalgeometry::core::entities {
 
         point(double xCoord, double yCoord, double zCoord = 0);
 
+        point(const std::array<double, 3>& coords);
+
         point(const point& other) = default;
 
         point& operator=(const point& other) = default;
 
         point(point&& other) = default;
 
-        point& operator=(point&& other) noexcept = default;
+        point& operator=(point&& other) = default;
         
         ~point() = default;
 

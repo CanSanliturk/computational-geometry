@@ -9,6 +9,10 @@ namespace computationalgeometry::core::entities {
     point::point(double xCoord, double yCoord, double zCoord)
         : x(xCoord), y(yCoord), z(zCoord) { }
 
+    point::point(const std::array<double, 3>& coords)
+        : x(coords[0]), y(coords[1]), z(coords[2]) { }
+    
+
     bool point::operator==(const point& other) const {
         for (unsigned int i = 0; i < 3; ++i)
             if (false == computationalgeometry::utilities::areEqual(getCoordinates()[i], other.getCoordinates()[i]))
@@ -20,14 +24,16 @@ namespace computationalgeometry::core::entities {
         const double newX = x - other.x;
         const double newY = y - other.y;
         const double newZ = z - other.z;
-        return { newX, newY, newZ };
+        point newPt(newX, newY, newZ);
+        return newPt;
     }
 
     point point::operator+(const point& other) const {
         const double newX = x + other.x;
         const double newY = y + other.y;
         const double newZ = z + other.z;
-        return { newX, newY, newZ };
+        point newPt(newX, newY, newZ);
+        return newPt;
     }
 
     double point::getDistanceTo(const point& other) const {

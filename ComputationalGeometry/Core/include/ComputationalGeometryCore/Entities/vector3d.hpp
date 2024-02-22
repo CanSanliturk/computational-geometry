@@ -33,6 +33,8 @@ namespace computationalgeometry::core::entities {
         point start;
         point end;
     };
+
+    using line3d = vector3d;
 };
 
 #endif

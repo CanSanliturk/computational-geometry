@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(TestPointGet)
    BOOST_CHECK(2 == p.getY());
    BOOST_CHECK(3 == p.getZ());
 
-   std::array<double, 3> expectedCoords { 1, 2, 3 };
+   std::array<double, 3> expectedCoords = { 1, 2, 3 };
    std::array<double, 3>&& actualCoords = p.getCoordinates();
    for (size_t i = 0; i < 3; i++)
        BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(TestPointSet)
    BOOST_CHECK(2 == p.getY());
    BOOST_CHECK(3 == p.getZ());
 
-   std::array<double, 3> expectedCoords { 1, 2, 3 };
+   std::array<double, 3> expectedCoords = { 1, 2, 3 };
    std::array<double, 3>&& actualCoords = p.getCoordinates();
    for (size_t i = 0; i < 3; i++)
        BOOST_CHECK(expectedCoords[i] == actualCoords[i]);

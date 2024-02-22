@@ -13,9 +13,8 @@ find_package(Boost REQUIRED COMPONENTS unit_test_framework)
 
 # Include the Utilities and Core directories
 target_include_directories(ComputationalGeometryTests PUBLIC 
-    ${CMAKE_SOURCE_DIR}/../Utilities/include
-    ${CMAKE_SOURCE_DIR}/../Core/include
-    include
+    ${PROJECT_SOURCE_DIR}/Utilities/include
+    ${PROJECT_SOURCE_DIR}/Core/include
     ${Boost_INCLUDE_DIRS}
 )
 
