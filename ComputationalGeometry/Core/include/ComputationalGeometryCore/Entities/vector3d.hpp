@@ -7,6 +7,9 @@ namespace computationalgeometry::core::entities {
     class vector3d {
         
     public:
+
+        vector3d() = default;
+
         vector3d(const point& startPoint, const point& endPoint);
 
         bool operator==(const vector3d& other) const;

@@ -11,16 +11,16 @@ BOOST_AUTO_TEST_CASE(TestIntersectingLines)
 {
     // define first line
     point line1_start(0, 0, 0);
-    point line1_end(5, 5, 0);
+    point line1_end(5, 5, 5);
     line3d line1(line1_start, line1_end);
 
     // define second line
-    point line2_start(0, 5, 0);
-    point line2_end(5, 0, 0);
+    point line2_start(0, 0, 2.5);
+    point line2_end(5, 5, 2.5);
     line3d line2(line2_start, line2_end);
 
     // define expected intersection
-    point expectedIntersection(2.5, 2.5, 0);
+    point expectedIntersection(2.5, 2.5, 2.5);
 
     // calculate intersection
     twoLinesIntersectionCalculator calculator(line1, line2);
