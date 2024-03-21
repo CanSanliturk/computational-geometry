@@ -46,6 +46,8 @@ namespace computationalgeometry::core::entities {
 
         void setZ(double zCoord);
 
+        std::size_t hash() const;
+
     private:
         double x;
         double y;

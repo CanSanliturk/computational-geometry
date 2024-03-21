@@ -8,6 +8,10 @@ namespace computationalgeometry::core::entities {
 
     vector3d::vector3d(const point& startCoord, const point& endCoord) : start(startCoord), end(endCoord) { }
 
+    bool vector3d::operator==(const vector3d& other) const {
+        return (getStart() == other.getStart()) && (getEnd() == other.getEnd());
+    }
+
     double vector3d::length() const {
         return start.getDistanceTo(end);
     }

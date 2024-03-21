@@ -47,4 +47,15 @@ BOOST_AUTO_TEST_CASE(TestPointSet)
        BOOST_CHECK(expectedCoords[i] == actualCoords[i]);
 }
 
+BOOST_AUTO_TEST_CASE(TestPointHash)
+{
+   point pt1(1, 2, 3);
+   point pt2(1.5, 6.3, 8.3);
+
+   BOOST_CHECK(pt1.hash() != pt2.hash());
+
+   point pt3(pt2);
+   BOOST_CHECK(pt2.hash() == pt3.hash());
+}
+
 BOOST_AUTO_TEST_SUITE_END()

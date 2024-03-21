@@ -3,6 +3,7 @@
 #include "ComputationalGeometryUtilities/maths.hpp"
 
 #include <cmath>
+#include <unordered_set>
 
 namespace computationalgeometry::core::entities {
 
@@ -74,5 +75,12 @@ namespace computationalgeometry::core::entities {
 
     void point::setZ(double zCoord) {
         this->z = zCoord;
+    }
+
+    std::size_t point::hash() const {
+        std::size_t h1 = std::hash<double>{}(getX());
+        std::size_t h2 = std::hash<double>{}(getY());
+        std::size_t h3 = std::hash<double>{}(getZ());
+        return h1 ^ (h2 << 1) ^ h3;
     }
 }
