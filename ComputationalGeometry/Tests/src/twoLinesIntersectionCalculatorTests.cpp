@@ -1,7 +1,10 @@
 #include "ComputationalGeometryCore/Algorithms/twoLinesIntersectionCalculator.hpp"
 
+#include "ComputationalGeometryUtilities/logging.hpp"
+
 #include <boost/test/unit_test.hpp>
 
+using namespace computationalgeometry::utilities;
 using namespace computationalgeometry::core::entities;
 using namespace computationalgeometry::core::algorithms;
 
@@ -46,6 +49,39 @@ BOOST_AUTO_TEST_CASE(TestNonIntersectingLines)
     std::optional<point> result = calculator.getIntersection();
 
     BOOST_CHECK(false == result.has_value());
+}
+
+BOOST_AUTO_TEST_CASE(TestIntersectionTwoSameLines) {
+
+    // define an horizontal line, and copy of it
+    line3d line1({ 0, 0, 0 }, { 1, 0, 0 });
+    line3d line2(line1);
+
+    twoLinesIntersectionCalculator calculator(line1, line2);
+    std::optional<point> result = calculator.getIntersection();
+    BOOST_CHECK(true == result.has_value());
+    if (true == result.has_value()) {
+        BOOST_CHECK(line1.getStart() == result.value());
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestIntersectionFirstsEndIsSecondsStart) {
+
+    // define three points
+    point pt1(0, 0, 0);
+    point pt2(1, 1, 1);
+    point pt3(2, 2, 2);
+
+    // define an horizontal line, and copy of it
+    line3d line1(pt1, pt2);
+    line3d line2(pt2, pt3);
+
+    twoLinesIntersectionCalculator calculator(line1, line2);
+    std::optional<point> result = calculator.getIntersection();
+    BOOST_CHECK(true == result.has_value());
+    if (true == result.has_value()) {
+        BOOST_CHECK(pt2 == result.value());
+    }
 }
 
 BOOST_AUTO_TEST_SUITE_END()

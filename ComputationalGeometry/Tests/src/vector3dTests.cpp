@@ -5,6 +5,7 @@
 
 using computationalgeometry::core::entities::point;
 using computationalgeometry::core::entities::vector3d;
+using computationalgeometry::core::entities::line3d;
 
 BOOST_AUTO_TEST_SUITE(Vector3dTests)
 
@@ -74,6 +75,17 @@ BOOST_AUTO_TEST_CASE(testGetAngleTo) {
 
     // Vectors are perpendicular, so the angle should be pi/2
     BOOST_TEST(angle == boost::math::constants::half_pi<double>(), boost::test_tools::tolerance(1e-5));
+}
+
+BOOST_AUTO_TEST_CASE(testGetDirection) {
+    point start(4.0, 5.0, 6.0);
+    point end(1.0, 2.0, 3.0);
+
+    line3d line(start, end);
+    vector3d calculatedDirectionVector = line.getDirectionVector();
+    vector3d expectedDirectionVector({ 0, 0, 0 }, end - start);
+
+    BOOST_CHECK(expectedDirectionVector == calculatedDirectionVector);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

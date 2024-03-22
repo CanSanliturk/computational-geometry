@@ -32,6 +32,8 @@ namespace computationalgeometry::core::entities {
         // method to get the angle between this vector and another vector in radians
         double getAngleTo(const vector3d& other) const;
 
+        vector3d getDirectionVector() const;
+
     private:
         point start;
         point end;

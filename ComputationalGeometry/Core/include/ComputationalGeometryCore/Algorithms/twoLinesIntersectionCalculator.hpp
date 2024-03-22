@@ -20,6 +20,9 @@ namespace computationalgeometry::core::algorithms {
 
         const computationalgeometry::core::entities::line3d& m_line1;
         const computationalgeometry::core::entities::line3d& m_line2;
+
+        bool areScalarMultiples() const;
+        std::optional<computationalgeometry::core::entities::line3d> isContained() const;
     };
 }
 

@@ -71,4 +71,11 @@ namespace computationalgeometry::core::entities {
     void vector3d::setEnd(const point& endPoint) {
         this->end = endPoint;
     }
+
+    vector3d vector3d::getDirectionVector() const {
+        point directionEnd = end - start;
+        point directionStart(0, 0, 0);
+        vector3d direction(directionStart, directionEnd);
+        return direction;
+    }
 }
