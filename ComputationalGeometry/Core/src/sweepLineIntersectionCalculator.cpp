@@ -36,7 +36,7 @@ public:
     }
 
     void sortLines() {
-        std::sort(m_lines.begin(), m_lines.end(), m_statusLineSorter);
+        std::ranges::sort(m_lines, m_statusLineSorter);
     }
 
     std::vector<point> getIntersections() {
@@ -60,7 +60,7 @@ private:
     
     // status structure to keep record of lines coinciding with status line, in order from left-to-right
     // (whose x-value is smaller, it will be the first to appear)
-    std::function<bool(const line3d&, const line3d&)> m_statusLineSorter = [&](const line3d& line1, const line3d& line2) {
+    std::function<bool(const line3d&, const line3d&)> m_statusLineSorter = [this](const line3d& line1, const line3d& line2) {
         // find left and right borders to find extents of the sweep line
         double leftBorder = std::min(line1.getStart().getX(), std::min(line1.getEnd().getX(), std::min(line2.getStart().getX(), line2.getEnd().getX())));
         double rightBorder = std::max(line1.getStart().getX(), std::max(line1.getEnd().getX(), std::max(line2.getStart().getX(), line2.getEnd().getX())));
@@ -93,7 +93,7 @@ unsigned long sweepLineIntersectionCalculator::addLines(const std::vector<line3d
 
 bool sweepLineIntersectionCalculator::removeLine(unsigned long lineId) {
     bool result = false;
-    if (m_idToLines.end() != m_idToLines.find(lineId))
+    if (true == m_idToLines.contains(lineId))
     {
         result = true;
         m_idToLines.erase(lineId);
