@@ -117,12 +117,12 @@ std::vector<point> sweepLineIntersectionCalculator::getIntersectionPoints() cons
     std::unordered_map<unsigned int, point> intersectionPoints;
 
     // for each event point
-    for (auto it = eventQueue.begin(); it != eventQueue.end(); ++it) {
+    for (const auto& [elevation, lines] : eventQueue) {
         // we are at new elevation
-        s.setElevation(it->first);
+        s.setElevation(elevation);
         
         // see if any new segment should be inserted
-        for (const auto& [line, isTop] : it->second)
+        for (const auto& [line, isTop] : lines)
             if (true == isTop)
                 s.addLine(m_idToLines.at(line));
 
@@ -134,7 +134,7 @@ std::vector<point> sweepLineIntersectionCalculator::getIntersectionPoints() cons
             intersectionPoints[p.hash()] = p;
 
         // remove segments who will be above sweep line
-        for (const auto& [line, isTop] : it->second)
+        for (const auto& [line, isTop] : lines)
             if (false == isTop)
                 s.removeLine(m_idToLines.at(line));
     }
