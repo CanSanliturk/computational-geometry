@@ -14,8 +14,7 @@ twoLinesIntersectionCalculator::twoLinesIntersectionCalculator(const line3d& lin
 std::optional<point> twoLinesIntersectionCalculator::getIntersection() const {
 
     // if one of the lines contains the other, return start point of the contained line
-    std::optional<line3d> containedLine = isContained();
-    if (true == containedLine.has_value())
+    if (std::optional<line3d> containedLine = isContained(); true == containedLine.has_value())
         return containedLine.value().getStart();
 
     const point& p1 = m_line1.getStart();
@@ -41,10 +40,9 @@ std::optional<point> twoLinesIntersectionCalculator::getIntersection() const {
 
     // Compute parameters for the lines' parametric equations
     double t = p1p3.crossProduct(dir2).length() / denom;
-    double s = p1p3.crossProduct(dir1).length() / denom;
-
+    
     // Check if the intersection point lies within the line segments
-    if (t >= 0 && t <= 1 && s >= 0 && s <= 1) {
+    if (double s = p1p3.crossProduct(dir1).length() / denom; t >= 0 && t <= 1 && s >= 0 && s <= 1) {
         // Calculate intersection point
         double x = p1.getX() + t * (dir1.getEnd().getX() - dir1.getStart().getX());
         double y = p1.getY() + t * (dir1.getEnd().getY() - dir1.getStart().getY());

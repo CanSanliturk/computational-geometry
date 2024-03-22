@@ -20,11 +20,11 @@ public:
         m_elevation = elevation;
     }
 
-    void addLine(line3d line) {
+    void addLine(const line3d& line) {
         m_lines.push_back(line);
     }
 
-    void removeLine(line3d line) {
+    void removeLine(const line3d& line) {
         // find line, move it to the end of the vector, and pop-it
         for (unsigned int i = 0; i < m_lines.size(); ++i) {
             if (m_lines[i] == line) {
@@ -60,11 +60,11 @@ private:
     
     // status structure to keep record of lines coinciding with status line, in order from left-to-right
     // (whose x-value is smaller, it will be the first to appear)
-    std::function<bool(line3d, line3d)> m_statusLineSorter = [&](line3d line1, line3d line2) {
+    std::function<bool(const line3d&, const line3d&)> m_statusLineSorter = [&](const line3d& line1, const line3d& line2) {
         // find left and right borders to find extents of the sweep line
         double leftBorder = std::min(line1.getStart().getX(), std::min(line1.getEnd().getX(), std::min(line2.getStart().getX(), line2.getEnd().getX())));
         double rightBorder = std::max(line1.getStart().getX(), std::max(line1.getEnd().getX(), std::max(line2.getStart().getX(), line2.getEnd().getX())));
-        line3d sweepLine({ leftBorder - 1, m_elevation, 0 }, {rightBorder + 1, m_elevation, 0});
+        line3d sweepLine({ leftBorder - 1, this->m_elevation, 0 }, {rightBorder + 1, this->m_elevation, 0});
 
         twoLinesIntersectionCalculator calculator1(line1, sweepLine);
         twoLinesIntersectionCalculator calculator2(line2, sweepLine);
@@ -122,9 +122,9 @@ std::vector<point> sweepLineIntersectionCalculator::getIntersectionPoints() cons
         s.setElevation(it->first);
         
         // see if any new segment should be inserted
-        for (auto lineIdPair : it->second)
-            if (true == lineIdPair.second)
-                s.addLine(m_idToLines.at(lineIdPair.first));
+        for (const auto& [line, isTop] : it->second)
+            if (true == isTop)
+                s.addLine(m_idToLines.at(line));
 
         // order segments according to their intersection location with sweep line
         s.sortLines();
@@ -134,14 +134,14 @@ std::vector<point> sweepLineIntersectionCalculator::getIntersectionPoints() cons
             intersectionPoints[p.hash()] = p;
 
         // remove segments who will be above sweep line
-        for (auto lineIdPair : it->second)
-            if (false == lineIdPair.second)
-                s.removeLine(m_idToLines.at(lineIdPair.first));
+        for (const auto& [line, isTop] : it->second)
+            if (false == isTop)
+                s.removeLine(m_idToLines.at(line));
     }
 
     std::vector<point> ret;
-    for (auto it : intersectionPoints)
-        ret.push_back(it.second);
+    for (const auto& [id, pt] : intersectionPoints)
+        ret.push_back(pt);
     
     return ret;
 }
